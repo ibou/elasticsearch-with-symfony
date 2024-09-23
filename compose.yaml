@@ -1,11 +1,11 @@
 services:
   db:
     image: mysql:8
+    container_name: mysql
     environment:
       MYSQL_DATABASE: ${MYSQL_DATABASE}
       MYSQL_PASSWORD: ${MYSQL_PASSWORD}
       MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
-      MYSQL_USER: ${MYSQL_USER}
     ports:
       - "3306:3306"
     volumes:
@@ -23,8 +23,9 @@ services:
 
   php:
     build: .
+    container_name: php
     ports:
-      - 80:80
+      - 82:80
       - 443:443
     volumes:
       - ./Caddyfile:/etc/caddy/Caddyfile
